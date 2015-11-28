@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class TaskListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var lists : Results<TaskList>!
     
     var isEditingMode = false
@@ -34,7 +34,7 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.taskListsTableView.reloadData()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -45,7 +45,7 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func didSelectSortCriteria(sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0{
-
+            
             // A-Z
             self.lists = self.lists.sorted("name")
         }else{
@@ -113,7 +113,7 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         alertController.addAction(createAction)
         
-        //Update or Create 預設為不啟用狀態（灰色字體）
+        //Update or Create 預設為不能點擊（灰色字體）
         createAction.enabled = false
         self.currentCreateAction = createAction
         
@@ -174,7 +174,7 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         return [deleteAction, editAction]
     }
-
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -187,12 +187,12 @@ class TaskListsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

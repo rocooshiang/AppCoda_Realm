@@ -10,8 +10,6 @@ import RealmSwift
 
 class Task: Object {
     
-    //All properties have been prefixed by dynamic var to make these properties accessors for the underlying database data.
-    
     dynamic var name = ""
     dynamic var createdAt = NSDate()
     dynamic var notes = ""

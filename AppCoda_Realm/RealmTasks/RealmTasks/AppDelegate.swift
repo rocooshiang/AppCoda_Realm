@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
         uiRealm.write { () -> Void in
             uiRealm.deleteAll()
@@ -28,22 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let taskListA = TaskList()
         taskListA.name = "WishList"
         
+        //#1 實體化在塞參數
         let wish1 = Task()
         wish1.name = "iPhone 7"
         wish1.notes = "64GB,Gold"
         
+        //#2 Dictionary
         let wish2 = Task(value: ["name":"iPhone 6S","notes":"32GB,Silver"])
+        
+        //#3 Array，需按照index順序
         let wish3 = Task(value: ["iPhone 6", NSDate(), "16GB,Gold", false])
         
         taskListA.tasks.appendContentsOf([wish1,wish2,wish3])
         
+        //Nested Objects
         let taskListB = TaskList(value: ["MoviesList", NSDate(), [["The Martian", NSDate(), "", false], ["The Maze Runner", NSDate(), "", true]]])
         
-        
-        uiRealm.write {
-            uiRealm.add([taskListA,taskListB])
+        uiRealm.write { () -> Void in
+            uiRealm.add([taskListA, taskListB])
         }
-
         return true
     }
 

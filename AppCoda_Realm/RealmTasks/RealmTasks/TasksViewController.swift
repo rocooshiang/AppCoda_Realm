@@ -183,7 +183,8 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
             var taskToBeUpdated: Task!
             if indexPath.section == 0{
                 taskToBeUpdated = self.openTasks[indexPath.row]
-            }else{
+            }
+            else{
                 taskToBeUpdated = self.completedTasks[indexPath.row]
             }
             uiRealm.write({ () -> Void in
